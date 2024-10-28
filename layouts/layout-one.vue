@@ -10,20 +10,27 @@
     <!-- <modal-product /> -->
 
   </div>
-  <div v-else>
-    <h6>Cargando...</h6>
+  <div v-else >
+    <div  style="display: flex;width: 100vw;height: 100vh;justify-content: center;align-items: center; background-color: rgb(200,200,200);">
+      <div class="d-flex" style=" border-radius:100px; width:50%; display:flex;justify-content: center;align-items: center;">
+        <div style=" display:flex;justify-content: center;align-items: center;">
+          <img class="justify-center" width="30%" height="30%" src="/img/lainez/LOADING%20LAINEZ.gif" alt="">
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { onMounted, ref} from "vue";
-import Loading from 'vue-loading-overlay';
 import 'vue-loading-overlay/dist/css/index.css';
 import {useCartStore} from "@/pinia/useCartStore";
 const isLoadingPage = useCartStore()
-const loadPage = ref<boolean>(true);
 const axios = useNuxtApp().$axios;
 const {addCategorias, addTop, addBanners, addTop20, initialState} = useCategorias;
+const loadPage = ref<boolean>(true);
+
+
 
 onMounted(()=>{
   cargarDataInit();

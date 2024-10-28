@@ -4,16 +4,7 @@
       <span @click="handleActive('setting')" class="tp-header-setting-toggle" id="tp-header-setting-toggle">Mi Perfil</span>
       <ul :class="`${isActive === 'setting' ? 'tp-setting-list-open' : ''}`">
         <li>
-          <nuxt-link href="/profile">Mis Datos</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link href="/wishlist">Mis Direcciones</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link href="/cart">Mis Telefonos</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link href="/login">Cerrar Sesión</nuxt-link>
+          <nuxt-link href="/profile">Surti Plataforma Online</nuxt-link>
         </li>
       </ul>
     </div>
@@ -21,6 +12,8 @@
 </template>
 
 <script lang="ts" setup>
+import {useAuthStore} from "@/pinia/useAuthStore";
+const {logUserOut} = useAuthStore();
 import {ref} from 'vue';
 let isActive = ref<string>('')
   // handle active

@@ -12,28 +12,26 @@
                 <div class="profile__info-content">
                   <!-- form start -->
 
-                  <Form @submit="onSubmitConsulta">
+                  <div>
                     <div class="row">
                       <div class="col-xxl-6 col-md-6">
                         <div class="profile__input-box">
                           <div class="profile__input">
-                            <Field
+                            <input
                                 type="text"
-                                :rules="validarChasis"
                                 v-model="state.chasis"
                                 name="chasis"
                                 placeholder="Chasis de la Motocicleta"/>
                           </div>
-                          <ErrorMessage name="chasis" />
                         </div>
                       </div>
                       <div class="col-xxl-4 col-md-4">
                         <div class="profile__btn">
-                          <button v-if="!state.sendRes"  class="tp-btn">Consultar Placa</button>
+                          <button v-if="!state.sendRes" @click="onSubmitConsulta"  class="tp-btn">Consultar Placa</button>
                         </div>
                       </div>
                     </div>
-                  </Form>
+                  </div>
 
                   <div class="profile__ticket table-responsive">
                     <table class="table">
@@ -81,72 +79,109 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
+useSeoMeta({ title: "Estado de Placa - Lainez Online" });
 import {useReCaptcha} from "vue-recaptcha-v3";
 import {useCartStore} from "@/pinia/useCartStore";
 import {toast} from "vue3-toastify";
 const axios = useNuxtApp().$axios;
 const loadPage = useCartStore()
 
-export default defineComponent({
-  setup(){
-    const recaptchaInstance = useReCaptcha();
-    const recaptcha = async () => {
-      // optional you can await for the reCaptcha load
-      await recaptchaInstance?.recaptchaLoaded();
+const state = reactive({
+  sendRes: false,
+  chasis: '',
+  Motos: []
+});
 
-      // get the token, a custom action could be added as argument to the method
-      const token = await recaptchaInstance?.executeRecaptcha('onSubmitId');
+const recaptchaInstance = useReCaptcha();
+const recaptcha = async () => {
+  // optional you can await for the reCaptcha load
+  await recaptchaInstance?.recaptchaLoaded();
 
-      return token;
-    };
+  // get the token, a custom action could be added as argument to the method
+  const token = await recaptchaInstance?.executeRecaptcha('onSubmitId');
 
-    const state = reactive({
-      sendRes: false,
-      chasis: '',
-      Motos: []
-    });
+  return token;
+};
 
-    return{
-      recaptcha,
-      state,
-    }
-  },
-  methods:{
-    async onSubmitConsulta():Promise<void>{
-      if (this.validarChasis(this.state.chasis) === true){
-        this.state.sendRes = true;
-        const token = await this.recaptcha();
-        let formData = new FormData();
-        formData.append('recaptcha-token', token);
-        formData.append('chasis', this.state.chasis);
-        loadPage.switchLoadingPage();
+async function onSubmitConsulta(){
+  let val = validarChasis(state.chasis);
+  if (val === true){
+    state.sendRes = true;
+    const token = await recaptcha();
+    let formData = new FormData();
+    formData.append('recaptcha-token', token);
+    formData.append('chasis', state.chasis);
+    loadPage.switchLoadingPage();
 
-        axios.post(`motocicleta/consulta/placa`, formData)
-            .then((res:resConsultaInterface)=>{
-              if (res.data.estado){
-                this.state.Motos = res.data.Moto;
-                toast.success(res.data.msj);
-              }else
-                toast.error(res.data.msj);
+    axios.post(`motocicleta/consulta/placa`, formData)
+        .then((res:resConsultaInterface)=>{
+          if (res.data.estado){
+            state.Motos = res.data.Moto;
+            toast.success(res.data.msj);
+          }else
+            toast.error(res.data.msj);
 
-              loadPage.switchLoadingPage()
-              this.state.sendRes = false;
-            })
-            .catch(()=>{
-              loadPage.switchLoadingPage();
-              this.state.sendRes = false;
-              toast.error(`Hubo un error en el servidor`);
-            })
-      }
-    },
-    validarChasis(value:string|null){
-      if (!value) return 'El # de chasis es requerida';
-      if (value?.length <= 10) return 'El # de chasis tiene que sey mayor a 10 carácteres';
-      return true;
-    }
-  }
-})
+          loadPage.switchLoadingPage()
+          state.sendRes = false;
+        })
+        .catch(()=>{
+          loadPage.switchLoadingPage();
+          state.sendRes = false;
+          toast.error(`Hubo un error en el servidor`);
+        })
+  }else
+    toast.success(val)
+
+}
+
+const validarChasis = (value:string|null):string | boolean=>{
+  if (!value) return 'El # de chasis es requerida';
+  if (value?.length <= 10) return 'El # de chasis tiene que sey mayor a 10 carácteres';
+  return true;
+}
+
+
+// export default defineComponent({
+//   methods:{
+//     async onSubmitConsulta():Promise<void>{
+//       if (this.validarChasis(this.state.chasis) === true){
+//         this.state.sendRes = true;
+//         const token = await this.recaptcha();
+//         let formData = new FormData();
+//         formData.append('recaptcha-token', token);
+//         formData.append('chasis', this.state.chasis);
+//         loadPage.switchLoadingPage();
+//
+//         axios.post(`motocicleta/consulta/placa`, formData)
+//             .then((res:resConsultaInterface)=>{
+//               if (res.data.estado){
+//                 this.state.Motos = res.data.Moto;
+//                 toast.success(res.data.msj);
+//               }else
+//                 toast.error(res.data.msj);
+//
+//               loadPage.switchLoadingPage()
+//               this.state.sendRes = false;
+//             })
+//             .catch(()=>{
+//               loadPage.switchLoadingPage();
+//               this.state.sendRes = false;
+//               toast.error(`Hubo un error en el servidor`);
+//             })
+//       }
+//     },
+//     validarChasis(value:string|null){
+//       if (!value) return 'El # de chasis es requerida';
+//       if (value?.length <= 10) return 'El # de chasis tiene que sey mayor a 10 carácteres';
+//       return true;
+//     }
+//   }
+// })
+
+
+
+
 interface resConsultaInterface{
   data: resDatosMotoInterface
 }

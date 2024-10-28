@@ -1,29 +1,26 @@
 <template>
-  <form @submit="onSubmit">
+  <div>
     <div class="tp-login-input-wrapper">
       <div class="tp-login-input-box">
         <div class="tp-login-input">
           <input
-            id="email"
             type="email"
-            placeholder="shofy@mail.com"
-            v-bind="email"
+            placeholder=""
+            v-model="user.username"
           />
         </div>
         <div class="tp-login-input-title">
-          <label for="email">Your Email</label>
+          <label for="email">Email</label>
         </div>
-        <err-message :msg="errors.email" />
       </div>
       <div class="tp-login-input-box">
         <div class="p-relative">
           <div class="tp-login-input">
             <input
-              id="tp_password"
               :type="showPass ? 'text' : 'password'"
               name="password"
-              placeholder="Min. 6 character"
-              v-bind="password"
+              v-model="user.password"
+              placeholder="Min. 8 caracteres"
             />
           </div>
           <div class="tp-login-input-eye" id="password-show-toggle">
@@ -37,56 +34,53 @@
             </span>
           </div>
           <div class="tp-login-input-title">
-            <label for="tp_password">Password</label>
+            <label for="tp_password">Contraseña</label>
           </div>
         </div>
-        <err-message :msg="errors.password" />
       </div>
     </div>
     <div
       class="tp-login-suggetions d-sm-flex align-items-center justify-content-between mb-20"
     >
       <div class="tp-login-remeber">
-        <input id="remeber" type="checkbox" />
-        <label for="remeber">Remember me</label>
+
       </div>
       <div class="tp-login-forgot">
-        <nuxt-link href="/forgot">Forgot Password?</nuxt-link>
+        <nuxt-link href="/forgot">¿Olvidó su contraseña?</nuxt-link>
       </div>
     </div>
     <div class="tp-login-bottom">
-      <button type="submit" class="tp-login-btn w-100">Login</button>
+      <button  class="tp-login-btn w-100" @click="login">Iniciar Sesión {{useAuth.loading}}</button>
     </div>
-  </form>
+  </div>
 </template>
 
 <script setup lang="ts">
-import { useForm } from "vee-validate";
-import * as yup from "yup";
+import {useAuthStore} from "@/pinia/useAuthStore";
+const useAuth = useAuthStore();
 
 let showPass = ref<boolean>(false);
 
-interface IFormValues {
-  email?: string | null;
-  password?: string | null;
-}
-const { errors, handleSubmit, defineInputBinds, resetForm } =
-  useForm<IFormValues>({
-    validationSchema: yup.object({
-      email: yup.string().required().email().label("Email"),
-      password: yup.string().required().min(6).label("Password"),
-    }),
-  });
+const state = reactive({
+  sendReq: false,
+})
 
-const onSubmit = handleSubmit((values) => {
-  alert(JSON.stringify(values, null, 2));
-  resetForm();
+const user = ref({
+  username: 'williams_santos@grupolainez.com',
+  password: '1998wdsl@@',
 });
+
+const login = async () => {
+  await useAuth.authenticateUser(user.value);
+  //
+  // if (authenticated)
+  //   navigateTo('/profile')
+
+}
 
 const togglePasswordVisibility = () => {
   showPass.value = !showPass.value;
 };
 
-const email = defineInputBinds("email");
-const password = defineInputBinds("password");
+
 </script>

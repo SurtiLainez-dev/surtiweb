@@ -6,11 +6,11 @@
       :class="`${full_width? 'container-fluid': shop_1600? 'container-shop': 'container'}`"
     >
       <div class="row">
-        <div v-if="!shop_right_side && !shop_no_side" class="col-xl-3 col-lg-4">
-          <!-- shop sidebar start -->
-          <shop-sidebar :shop_full="full_width" :shop_1600="shop_1600" />
-          <!-- shop sidebar end -->
-        </div>
+<!--        <div v-if="!shop_right_side && !shop_no_side" class="col-xl-3 col-lg-4">-->
+<!--          &lt;!&ndash; shop sidebar start &ndash;&gt;-->
+<!--          <shop-sidebar :shop_full="full_width" :shop_1600="shop_1600" />-->
+<!--          &lt;!&ndash; shop sidebar end &ndash;&gt;-->
+<!--        </div>-->
         <div :class="`${shop_no_side?'col-xl-12':'col-xl-9 col-lg-8'}`">
           <div class="tp-shop-main-wrapper">
             <div class="tp-shop-top mb-45">

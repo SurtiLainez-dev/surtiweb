@@ -11,8 +11,8 @@
                       </span>
                     </div>
                     <div class="tp-counter-content">
-                      <h4><span class="purecounter">750</span>+</h4>
-                      <p>Happy Customers</p>
+                      <h4><span class="purecounter">15,000</span>+</h4>
+                      <p>Clientes</p>
                     </div>
                 </div>
                 <div class="tp-counter-item d-flex align-items-start mb-30">
@@ -22,19 +22,19 @@
                       </span>
                     </div>
                     <div class="tp-counter-content">
-                      <h4><span class="purecounter">2016</span></h4>
-                      <p>Founding Year</p>
+                      <h4><span class="purecounter">2000</span></h4>
+                      <p>Año de Fundación</p>
                     </div>
                 </div>
                 <div class="tp-counter-item d-flex align-items-start mb-30">
                     <div class="tp-counter-icon mr-15">
                       <span>
-                          <svg-order-truck/>
+                          <svg-founding/>
                       </span>
                     </div>
                     <div class="tp-counter-content">
-                      <h4><span class="purecounter">120</span>+</h4>
-                      <p>Product Orders</p>
+                      <h4><span class="purecounter">50</span>+</h4>
+                      <p>Colaboradores</p>
                     </div>
                 </div>
                 <div class="tp-counter-item d-flex align-items-start mb-30">
@@ -44,8 +44,8 @@
                       </span>
                     </div>
                     <div class="tp-counter-content">
-                      <h4><span class="purecounter">60</span>+</h4>
-                      <p>Quality Products</p>
+                      <h4><span class="purecounter">900</span>+</h4>
+                      <p>Artículos</p>
                     </div>
                 </div>
               </div>

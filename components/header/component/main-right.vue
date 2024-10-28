@@ -3,36 +3,42 @@
     class="tp-header-main-right d-flex align-items-center justify-content-end"
   >
     <div class="tp-header-login d-none d-lg-block">
-      <nuxt-link href="/profile" class="d-flex align-items-center">
+      <nuxt-link :href="authenticated?'/profile':'/login'" class="d-flex align-items-center">
         <div class="tp-header-login-icon">
           <span>
             <SvgUser />
           </span>
         </div>
         <div class="tp-header-login-content d-none d-xl-block">
-          <span>Iniciar</span>
-          <h5 class="tp-header-login-title">Iniciar Sesión</h5>
+          <div v-if="!authenticated">
+            <span>Portal de Clientes</span>
+            <h5 class="tp-header-login-title">Iniciar Sesión</h5>
+          </div>
+          <div v-else>
+            <span>{{usuario}}</span>
+            <h5 style="font-size:14px">{{nombre}}</h5>
+          </div>
         </div>
       </nuxt-link>
     </div>
     <div class="tp-header-action d-flex align-items-center ml-50">
-      <div class="tp-header-action-item d-none d-lg-block">
-        <nuxt-link href="/compare" class="tp-header-action-btn">
-          <svg-compare />
-        </nuxt-link>
-      </div>
-      <div class="tp-header-action-item d-none d-lg-block">
-        <nuxt-link href="/wishlist" class="tp-header-action-btn">
-          <svg-wishlist />
-          <span class="tp-header-action-badge">{{wishlistStore.wishlists.length}}</span>
-        </nuxt-link>
-      </div>
-      <div class="tp-header-action-item">
-        <button @click="cartStore.handleCartOffcanvas" type="button" class="tp-header-action-btn cartmini-open-btn">
-          <svg-cart-bag />
-          <span class="tp-header-action-badge">{{ cartStore.cart_products.length }}</span>
-        </button>
-      </div>
+<!--      <div class="tp-header-action-item d-none d-lg-block">-->
+<!--        <nuxt-link href="/compare" class="tp-header-action-btn">-->
+<!--          <svg-compare />-->
+<!--        </nuxt-link>-->
+<!--      </div>-->
+<!--      <div class="tp-header-action-item d-none d-lg-block">-->
+<!--        <nuxt-link href="/wishlist" class="tp-header-action-btn">-->
+<!--          <svg-wishlist />-->
+<!--          <span class="tp-header-action-badge">{{wishlistStore.wishlists.length}}</span>-->
+<!--        </nuxt-link>-->
+<!--      </div>-->
+<!--      <div class="tp-header-action-item">-->
+<!--        <button @click="cartStore.handleCartOffcanvas" type="button" class="tp-header-action-btn cartmini-open-btn">-->
+<!--          <svg-cart-bag />-->
+<!--          <span class="tp-header-action-badge">{{ cartStore.cart_products.length }}</span>-->
+<!--        </button>-->
+<!--      </div>-->
       <div class="tp-header-action-item d-lg-none">
         <button
           @click="utilsStore.handleOpenMobileMenu"
@@ -50,6 +56,9 @@
 import { useCartStore } from '@/pinia/useCartStore';
 import { useWishlistStore } from '@/pinia/useWishlistStore';
 import { useUtilityStore} from '@/pinia/useUtilityStore';
+import {useAuthStore} from "@/pinia/useAuthStore";
+import {storeToRefs} from "pinia";
+const { authenticated, nombre, usuario } = useAuthStore();
 
 const cartStore = useCartStore();
 const wishlistStore = useWishlistStore();

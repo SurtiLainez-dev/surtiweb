@@ -1,13 +1,17 @@
 import axios from "axios";
 
 export default defineNuxtPlugin(async () =>{
-    const url = 'http://143.198.112.228/api/tilk/';
+    const url = 'https://grupolainez.com/api/tilk/';
+
     let api = axios.create({
         baseURL: url
     })
+
     return{
         provide: {
-            axios: api
+            axios: api,
         }
     }
 })
+
+

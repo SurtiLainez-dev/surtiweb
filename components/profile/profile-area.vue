@@ -27,9 +27,9 @@
                         <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
                           <profile-info/>
                         </div>
-                        <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">
-                          <profile-password/>
-                        </div>
+<!--                        <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">-->
+<!--                          <profile-password/>-->
+<!--                        </div>-->
                         <div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
                           <profile-address/>
                         </div>

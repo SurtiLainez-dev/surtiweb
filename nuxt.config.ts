@@ -15,7 +15,7 @@ export default defineNuxtConfig({
   ],
   app: {
     head: {
-      title: "Surtidora Lainez",
+      title: "Surtidora Lainez - Electrodomesticos, Muebles y Motocicletas",
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
       script: [
@@ -24,6 +24,15 @@ export default defineNuxtConfig({
         },
       ],
     }
+  },
+  ssr: true,
+  target: "server",
+  nitro: {
+    prerender: {
+      routes:['/surti/otras_gestiones/estado_placa'],
+      crawlLinks: true,
+      failOnError: false,
+    },
   },
   css: [
     "bootstrap/scss/bootstrap.scss",

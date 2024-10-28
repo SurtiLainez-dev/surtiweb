@@ -47,14 +47,14 @@ const handleActive = () => isActive.value = !isActive.value;
 // handle parent
 const handleParentCategory = (value:string, cod:string, id:number) => {
   const newCategory = value.toLowerCase().replace("&", "").split(" ").join("-");
-  router.push(`/tienda?category=${newCategory}`);
+  router.push(`/shop?category=${newCategory}`);
   catStore.capturarDatosCategoria(value,cod, id,'cat')
 }
 
 // handle parent
 const handleSubCategory = (value:string, cod:string, id:number) => {
   const newCategory = value.toLowerCase().replace("&", "").split(" ").join("-");
-  router.push(`/tienda?subCategory=${newCategory}`);
+  router.push(`/shop?subCategory=${newCategory}`);
   catStore.capturarDatosCategoria(value,cod, id,'sub');
 }
 

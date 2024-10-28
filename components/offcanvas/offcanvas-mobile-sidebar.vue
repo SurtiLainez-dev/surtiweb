@@ -19,7 +19,7 @@
         >
           <div class="offcanvas__logo logo">
             <nuxt-link href="/">
-              <img src="/img/logo/logo.svg" alt="logo" />
+              <img style="width: 140px;" src="/img/lainez/logolainez1.svg" alt="logo" />
             </nuxt-link>
           </div>
         </div>
@@ -43,11 +43,6 @@
               <a href="tel:098-852-987">004524865</a>
             </h3>
           </div>
-        </div>
-        <div class="offcanvas__btn">
-          <nuxt-link href="/contact" class="tp-btn-2 tp-btn-border-2"
-            >Contact Us</nuxt-link
-          >
         </div>
       </div>
       <div class="offcanvas__bottom">

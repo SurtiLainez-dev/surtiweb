@@ -37,9 +37,6 @@
                   </div>
                   <div class="col-xl-7 col-lg-6 col-md-6">
                     <div class="tp-history-thumb-wrapper ml-150 p-relative">
-                      <div class="tp-history-thumb-text">
-                        <p v-html="item.thumb_text"></p>
-                      </div>
                       <div class="tp-history-thumb m-img">
                         <img :src="item.img" alt="thumb_img" />
                       </div>
@@ -100,47 +97,48 @@ const slider_data: {
   year: number;
 }[] = [
   {
-    title: "About our <br> Online Store",
+    title: "Nuestro Comienzo",
     subtitle_1:
-      "At our eCommerce site, we are passionate about providing our customers with the best possible shopping experience. From our extensive product selection to our exceptional customer service, we are committed to exceeding your expectations.",
+      "La apertura de la primera sucursal fué en Barrio Rio Negro, abajo del precidió en Trujillo, Colón",
     subtitle_2:
-      "So start browsing today and find the perfect products to suit your needs!",
-    img: "/img/history/history-1.jpg",
-    thumb_text: "Welcome to our <br> Shofy eCommerce Theme",
-    year: 2016,
+      "Fué nuestro hogar hasta el año 2005",
+    img: "/img/lainez/APERTURA.png",
+    thumb_text: "",
+    year: 2000,
   },
   {
-    title: "About our <br> Online Store",
+    title: "Nuestro Primer Año",
     subtitle_1:
-      "At our eCommerce site, we are passionate about providing our customers with the best possible shopping experience. From our extensive product selection to our exceptional customer service, we are committed to exceeding your expectations.",
+      "Surtidora Laínez fué recibida con los brazos abiertos en el pueblo de Trujillo",
     subtitle_2:
-      "So start browsing today and find the perfect products to suit your needs!",
-    img: "/img/history/history-2.jpg",
+      "Cuando cumplimos el primer año empezamos a vender eléctrodomesticos y camas",
+    img: "/img/lainez/ANIVERSARIO.png",
     thumb_text: "Welcome to our <br> Shofy eCommerce Theme",
-    year: 2017,
+    year: 2001,
   },
   {
-    title: "About our <br> Online Store",
+    title: "Nuestra Segunda Sucursal",
     subtitle_1:
-      "At our eCommerce site, we are passionate about providing our customers with the best possible shopping experience. From our extensive product selection to our exceptional customer service, we are committed to exceeding your expectations.",
+      "Gracias a la buena administración de los fundadores de la mano de Dios que nunca nos ha abandonado, Surtidora" +
+        " Lainez abrió su segunda sucursal en la ciudad de Trujillo",
     subtitle_2:
-      "So start browsing today and find the perfect products to suit your needs!",
-    img: "/img/history/history-1.jpg",
+      "Esta sucursal estuvo ubicada en Rio Negro, al frente de donde era la gasolinera Shell",
+    img: "/img/lainez/SEGUNDA SUCURSAL.png",
     thumb_text: "Welcome to our <br> Shofy eCommerce Theme",
-    year: 2018,
+    year: 2005,
   },
   {
-    title: "About our <br> Online Store",
+    title: "Nuestra Expansión",
     subtitle_1:
-      "At our eCommerce site, we are passionate about providing our customers with the best possible shopping experience. From our extensive product selection to our exceptional customer service, we are committed to exceeding your expectations.",
+      "En el año 2015 Surtidora Laínez comenzó su expansión a otras ciudades ofreciendo artículos y servicio de calidad a todos nuestros clientes. La ciudad de San Esteban fué nuestra primera sucursal fuera de la ciudad de Trujillo.",
     subtitle_2:
-      "So start browsing today and find the perfect products to suit your needs!",
-    img: "/img/history/history-2.jpg",
+      "Actualmente tenemos presencia en los departamentos de Olancho, Yoro y Colón",
+    img: "/img/lainez/EXPANSION.png",
     thumb_text: "Welcome to our <br> Shofy eCommerce Theme",
-    year: 2019,
+    year: 2015,
   },
 ];
 
 // slider nav data
-const slider_nav_data: number[] = [2016, 2017, 2018, 2019];
+const slider_nav_data: number[] = [2000, 2001, 2005, 2015];
 </script>

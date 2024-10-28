@@ -10,47 +10,43 @@
               <div class="profile__info" style="padding: 25px">
                 <h3 class="profile__info-title">Nueva Ficha de Garantia</h3>
                 <div class="profile__info-content">
-                  <!-- form start -->
 
-                  <Form @submit="onSubmitId">
+
+                  <div>
                     <div class="row">
                       <div class="col-xxl-4 col-md-4">
                         <div class="profile__input-box">
                           <div class="profile__input">
-                            <Field
-                                :rules="validarIdentidad"
+                            <input
                                 type="text"
-                                v-model="firstData.identidad"
+                                v-model="state.identidad"
                                 name="identidad"
                                 placeholder="Identidad del Cliente"/>
                             <span><svg-user-3/></span>
                           </div>
-                          <ErrorMessage name="identidad" />
                         </div>
                       </div>
 
                       <div class="col-xxl-4 col-md-4">
                         <div class="profile__input-box">
                           <div class="profile__input">
-                            <Field
-                                  :rules="validarCuenta"
+                            <input
                                   type="text"
-                                  v-model="firstData.cuenta"
+                                  v-model="state.venta"
                                   name="cuenta"
                                   placeholder="# de Cuenta"/>
                             <span></span>
                           </div>
-                          <ErrorMessage name="cuenta" />
                         </div>
                       </div>
 
                       <div class="col-xxl-4 col-md-4">
                         <div class="profile__btn">
-                          <button v-if="!state.sendReq"  class="tp-btn">Consultar Articulos</button>
+                          <button v-if="!state.sendReq" @click="onSubmitId"  class="tp-btn">Consultar Articulos</button>
                         </div>
                       </div>
                     </div>
-                  </Form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -105,20 +101,17 @@
                   <p>2. En el campo de abajo describa el proble que presenta el articulo</p>
                   <p>3. Seleccione el botón Enviar Caso de Garantía</p>
                   <p>* Si tiene un correo eléctronico asociado a su perfil, recibirá actualizaciones respecto a su caso.</p>
-                  <Form @submit="onSubmitFicha">
+                  <div>
                     <div class="row">
                       <div class="col-xxl-12 col-md-12">
                         <div class="profile__input-box">
                           <div class="profile__input">
-                            <Field
-                                as="textarea"
-                                v-model="firstData.comentario"
-                                type="text"
-                                :rules="validarComentario"
+                            <textarea
+                                rows="3"
+                                v-model="state.comentario"
                                 name="comentario"
                                 placeholder="Describa el problema del articulo con un máximo de 400 carácteres..."/>
                           </div>
-                          <ErrorMessage name="comentario" />
                         </div>
                       </div>
                     </div>
@@ -131,10 +124,11 @@
                             class="tp-btn">Regresar</button>
                         <button
                             v-if="!state.sendReq"
+                            @click="onSubmitFicha"
                             style="margin: 2px" class="tp-btn">Enviar Caso de Garantía</button>
                       </div>
                     </div>
-                  </Form>
+                  </div>
                 </div>
               </div>
             </div>
@@ -190,152 +184,146 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 useSeoMeta({ title: "Nuevo Proceso de Garantia - Lainez Online" });
 import { useReCaptcha } from 'vue-recaptcha-v3';
 const axios = useNuxtApp().$axios;
-import { Form, Field, ErrorMessage } from 'vee-validate';
 import { useCartStore } from "@/pinia/useCartStore";
 const loadPage = useCartStore()
 import { toast } from "vue3-toastify";
-export default defineComponent({
-  components:{
-    Form,
-    Field,
-    ErrorMessage
-  },
 
-  setup() {
-    const recaptchaInstance = useReCaptcha();
-    const recaptcha = async () => {
-      // optional you can await for the reCaptcha load
-      await recaptchaInstance?.recaptchaLoaded();
+const recaptchaInstance = useReCaptcha();
+const recaptcha = async () => {
+  // optional you can await for the reCaptcha load
+  await recaptchaInstance?.recaptchaLoaded();
 
-      // get the token, a custom action could be added as argument to the method
-      const token = await recaptchaInstance?.executeRecaptcha('onSubmitId');
+  // get the token, a custom action could be added as argument to the method
+  const token = await recaptchaInstance?.executeRecaptcha('onSubmitId');
 
-      return token;
-    };
-    const firstData: firtsReq ={
-      identidad: "",
-      cuenta: "",
-      comentario: "",
-      Articulos: [],
-    }
-    const state = reactive({
-      selectArt: false,
-      sendReq: false,
-      vista: 1,
-      ArtSeleccionado: [],
-      cuenta: "",
-      ficha: ""
-    })
+  return token;
+};
 
-    return {
-      recaptcha,
-      firstData,
-      state,
-    };
-  },
-  methods:{
-    limpiarArtSeleccionados(){
-      this.state.ArtSeleccionado = [];
-      this.state.selectArt = true;
-    },
-    async onSubmitId(): Promise<void>{
-      if (this.validarIdentidad(this.firstData.identidad) === true && this.validarCuenta(this.firstData.cuenta) === true){
-        this.state.sendReq = true;
-        const token = await this.recaptcha();
-        let formData = new FormData();
-        formData.append('recaptcha-token', token);
-        formData.append('identidad', this.firstData.identidad);
-        formData.append('cuenta', this.firstData.cuenta);
-        loadPage.switchLoadingPage()
+const firstData: firtsReq ={
+  identidad: "",
+  cuenta: "",
+  comentario: "",
+  Articulos: [],
+}
+const state = reactive({
+  selectArt: false,
+  sendReq: false,
+  vista: 1,
+  ArtSeleccionado: [],
+  cuenta: "",
+  ficha: "",
+  identidad: "",
+  venta: "",
+  comentario: ""
+})
 
-        axios.post('articulos_venta', formData).then((res:resVista1)=>{
-          if (res.data.exist){
-            this.firstData.Articulos = res.data.articulos
-            this.state.vista         = 2;
-            this.state.sendReq       = false;
-            this.state.cuenta        = res.data.cuenta;
-            toast.success(`Datos cargados exitosamente`);
-          }else {
-            toast.error(`No hay datos asociados a los datos que ingresaste`);
-            this.state.sendReq = false;
-          }
-          loadPage.switchLoadingPage()
-        }).catch(()=>{
-          loadPage.switchLoadingPage()
-          this.state.sendReq = false;
-        })
+const limpiarArtSeleccionados = ()=>{
+  state.ArtSeleccionado = [];
+  state.selectArt = true;
+};
+const validarCuenta = (value:string|null) => {
+  let regexIdentidad = RegExp("^[0-9 ]*$");
+  if (!value) return 'El # de cuenta es requerida';
+  if (!regexIdentidad.test(value)) return 'El # de cuenta tiene que llevar solo números. Sin guiones y sin espacios';
+  if (value?.length <= 6) return 'El # de cuenta tiene que sey mayor a 5 carácteres';
+  return true;
+}
+const validarIdentidad = (value:string|null) => {
+  let regexIdentidad = RegExp("^[0-9 ]*$");
+  if (!value) return 'La identidad es requerida';
+  if (!regexIdentidad.test(value)) return 'La identidad solo tiene que llevar solo números. Sin guiones y sin espacios';
+  if (value?.length !== 13) return 'La identidad tiene que ser de 13 carácteres';
+  return true;
+}
+const validarComentario = (value:string|null) => {
+  if (!value) return 'El comentario es obligatorio';
+  if (value?.length <= 15) return 'El comentario tiene que ser mayor a 15 carácteres';
+  if (value?.length >= 400) return 'El comentario tiene que ser menor a 400 carácteres';
+  return true
+}
+const seleccionarArticulo = (item:artConsultaInterface)=>{
+  state.ArtSeleccionado[0] = item;
+  state.selectArt = true;
+}
+async function onSubmitId(){
+  let valIdentidad = validarIdentidad(state.identidad);
+  let valCuenta    = validarCuenta(state.venta)
+  if (valIdentidad === true && valCuenta  === true){
+    state.sendReq = true;
+    const token = await recaptcha();
+    let formData = new FormData();
+    formData.append('recaptcha-token', token);
+    formData.append('identidad', state.identidad);
+    formData.append('cuenta', state.venta);
+    loadPage.switchLoadingPage()
+
+    axios.post('articulos_venta', formData).then((res:resVista1)=>{
+      if (res.data.exist){
+        firstData.Articulos = res.data.articulos
+        state.vista         = 2;
+        state.sendReq       = false;
+        state.cuenta        = res.data.cuenta;
+        toast.success(`Datos cargados exitosamente`);
+      }else {
+        toast.error(`No hay datos asociados a los datos que ingresaste`);
+        state.sendReq = false;
       }
-    },
-    async onSubmitFicha():Promise<void>{
-      if (this.state.selectArt){
-        if (this.validarComentario(this.firstData.comentario) === true){
-          this.state.sendReq = true;
-          const token = await this.recaptcha();
-          let formData = new FormData();
-          let articulo = '';
-          if (this.state.ArtSeleccionado.length > 0)
-            articulo = this.state.ArtSeleccionado[0].articulo;
-
-          formData.append('recaptcha-token', token);
-          formData.append('articulo',   articulo);
-          formData.append('comentario', this.firstData.comentario);
-          formData.append('cuenta',     this.state.cuenta);
-          loadPage.switchLoadingPage()
-
-          axios.post('ficha_garantia', formData).then((res:resVista2)=>{
-            if (res.data.estado){
-              this.state.vista = 3;
-              this.state.ficha = res.data.ficha;
-              toast.success(res.data.msj);
-            }else {
-              this.state.vista = 4;
-              toast.error(res.data.msj);
-            }
-            loadPage.switchLoadingPage()
-          }).catch((error:any)=>{
-            if (error.response.status === 422) {
-              toast.error(error.response.data.msj);
-              this.state.vista = 1;
-            }
-            loadPage.switchLoadingPage()
-            this.state.sendReq = false;
-            console.log(error)
-          })
-        }
-      }else
-        toast.dark('Por favor seleccione una opción de la lista de artículos')
-    },
-    seleccionarArticulo(item:artConsultaInterface){
-      this.state.ArtSeleccionado[0] = item;
-      this.state.selectArt = true;
-    },
-    validarComentario(value:string|null){
-      if (!value) return 'El comentario es obligatorio';
-      if (value?.length <= 15) return 'El comentario tiene que ser mayor a 15 carácteres';
-      if (value?.length >= 400) return 'El comentario no tiene que ser mayor a 400 carácteres';
-      return true
-    },
-    validarCuenta(value:string|null){
-      let regexIdentidad = RegExp("^[0-9 ]*$");
-      if (!value) return 'El # de cuenta es requerida';
-      if (!regexIdentidad.test(value)) return 'El # de cuenta tiene que llevar solo números. Sin guiones y sin espacios';
-      if (value?.length <= 6) return 'El # de cuenta tiene que sey mayor a 5 carácteres';
-      return true;
-    },
-    validarIdentidad(value:string|null){
-      let regexIdentidad = RegExp("^[0-9 ]*$");
-      if (!value) return 'La identidad es requerida';
-      if (!regexIdentidad.test(value)) return 'La identidad solo tiene que llevar solo números. Sin guiones y sin espacios';
-      if (value?.length !== 13) return 'La identidad tiene que ser de 13 carácteres';
-      return true;
-    }
+      loadPage.switchLoadingPage()
+    }).catch(()=>{
+      loadPage.switchLoadingPage()
+      state.sendReq = false;
+    })
+  }else{
+    if (valCuenta !== true)
+      toast.error(valCuenta)
+    if (valIdentidad !== true)
+      toast.error(valIdentidad)
   }
-//
-});
+}
+async function onSubmitFicha(){
+  if (state.selectArt){
+    let valComentario = validarComentario(state.comentario)
+    if (valComentario === true){
+      state.sendReq = true;
+      const token = await recaptcha();
+      let formData = new FormData();
+      let articulo = '';
+      if (state.ArtSeleccionado.length > 0)
+        articulo = state.ArtSeleccionado[0].articulo;
+
+      formData.append('recaptcha-token', token);
+      formData.append('articulo',   articulo);
+      formData.append('comentario', state.comentario);
+      formData.append('cuenta',     state.cuenta);
+      loadPage.switchLoadingPage()
+
+      axios.post('ficha_garantia', formData).then((res:resVista2)=>{
+        if (res.data.estado){
+          state.vista = 3;
+          state.ficha = res.data.ficha;
+          toast.success(res.data.msj);
+        }else {
+          state.vista = 4;
+          toast.error(res.data.msj);
+        }
+        loadPage.switchLoadingPage()
+      }).catch((error:any)=>{
+        if (error.response.status === 422) {
+          toast.error(error.response.data.msj);
+          state.vista = 1;
+        }
+        loadPage.switchLoadingPage()
+        state.sendReq = false;
+      })
+    }else
+      toast.error(valComentario)
+  }else
+    toast.dark('Por favor seleccione una opción de la lista de artículos')
+}
 export interface resVista1{
   data: resIDInterface
 }

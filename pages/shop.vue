@@ -1,15 +1,26 @@
 <template>
   <div>
-      <!-- breadcrumb start -->
-      <breadcrumb-1 title="Shop Grid" subtitle="Shop Grid" />
-      <!-- breadcrumb end -->
-
-      <!-- shop area start -->
-      <shop-area/>
-      <!-- shop area end -->
+    <!-- breadcrumb start -->
+    <breadcrumb-1 :title="catStore.tituloCategoria" :subtitle="catStore.tituloCategoria" />
+    <!-- breadcrumb end -->
+    <shop-area v-if="!catStore.loadPage" />
   </div>
 </template>
 
-<script setup lang="ts">
-useSeoMeta({ title: "Shop Page" });
+<script setup>
+const axios = useNuxtApp().$axios;
+import {useCategoriasStore} from "@/pinia/useCategoriasStore";
+const loadPage = ref(true);
+
+const catStore = useCategoriasStore()
+onMounted(()=>{
+  cargarArticulos();
+})
+const cargarArticulos = async () =>{
+  catStore.cargarDatos();
+}
 </script>
+
+<style scoped>
+
+</style>

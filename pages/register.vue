@@ -1,7 +1,7 @@
 <template>
   <div>
       <!-- breadcrumb start -->
-      <breadcrumb-4 title="Register Now" subtitle="Register" :center="true" />
+      <breadcrumb-4 title="Usuario Nuevo" subtitle="Registro" :center="true" />
       <!-- breadcrumb end -->
 
       <!-- register area start -->
@@ -11,5 +11,5 @@
 </template>
 
 <script setup lang="ts">
-useSeoMeta({ title: "Register Page" });
+useSeoMeta({ title: "Registrando Cuenta Nueva - Lainez Online" });
 </script>

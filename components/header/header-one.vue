@@ -15,7 +15,8 @@
             </div>
             <div class="col-md-3">
               <div class="tp-header-top-right d-flex align-items-center justify-content-end">
-                <header-component-top-menu />
+<!--                Auth-->
+                <header-component-top-menu v-if="authenticated"/>
               </div>
             </div>
           </div>
@@ -131,13 +132,15 @@
 
   <!-- cart offcanvas start -->
   <offcanvas-mobile-sidebar product-type="electronics"/>
-  <!-- cart offcanvas end -->
 </template>
 
 <script setup lang="ts">
 import { useCartStore } from '@/pinia/useCartStore';
 import { useWishlistStore } from '@/pinia/useWishlistStore';
 import { useUtilityStore} from '@/pinia/useUtilityStore';
+import {useAuthStore} from "@/pinia/useAuthStore";
+import {storeToRefs} from "pinia";
+const { authenticated } = useAuthStore()
 
 const {isSticky} = useSticky();
 const cartStore = useCartStore();

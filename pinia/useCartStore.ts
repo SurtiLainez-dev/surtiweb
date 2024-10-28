@@ -12,7 +12,6 @@ export const useCartStore = defineStore("cart_product", () => {
 
   // add_cart_product
   const switchLoadingPage = () =>{
-    console.log("entra")
     return isLoadingPage.value = !isLoadingPage.value;
   }
   const addCartProduct = (payload: IProduct) => {

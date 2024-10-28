@@ -11,15 +11,12 @@
           <div class="col-xl-6 col-lg-8">
               <div class="tp-login-wrapper">
                 <div class="tp-login-top text-center mb-30">
-                    <h3 class="tp-login-title">Sign Up Shofy.</h3>
-                    <p>Already have an account?  <span><nuxt-link href="/login">Sign In</nuxt-link></span></p>
+                    <h3 class="tp-login-title">Creando Cuenta en Surti Lainez Online</h3>
+                    <p>¿Tienes cuenta?  <span><nuxt-link href="/login">Inicia Sesión</nuxt-link></span></p>
                 </div>
                 <div class="tp-login-option">
-                  <!-- login social start -->
-                  <login-social/>
-                  <!-- login social end -->
                     <div class="tp-login-mail text-center mb-40">
-                      <p>or Sign up with <a href="#">Email</a></p>
+                      <p></p>
                     </div>
                     <!-- form start -->
                     <forms-register-form/>

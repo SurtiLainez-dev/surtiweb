@@ -2,7 +2,7 @@
   <div class="offcanvas__category pb-40">
     <button @click="toggleCategoryActive" class="tp-offcanvas-category-toggle">
       <i class="fa-solid fa-bars"></i>
-      All Categories
+      Todas las Categorias
     </button>
     <div class="tp-category-mobile-menu">
       <nav
@@ -10,7 +10,7 @@
       >
         <ul :class="isCategoryActive ? 'active' : ''">
           <li
-            v-for="(item, i) in filterCategories"
+            v-for="(item, i) in initialState.cats"
             :key="i"
             class="has-dropdown"
           >
@@ -22,10 +22,10 @@
                   style="width: 50px; height: 50px; object-fit: contain"
                 />
               </span>
-              <span>{{ item.parent }}</span>
+              <span>{{ item.nombre }}</span>
               <button
-                v-if="item.children"
-                @click="handleOpenSubMenu(item.parent)"
+                v-if="item.sub_familia_articulos.length > 0"
+                @click="handleOpenSubMenu(item.nombre)"
                 class="dropdown-toggle-btn"
               >
                 <i class="fa-regular fa-angle-right"></i>
@@ -33,11 +33,11 @@
             </a>
 
             <ul
-              v-if="item.children"
-              :class="`tp-submenu ${openCategory === item.parent ? 'active' : ''}`"
+              v-if="item.sub_familia_articulos.length > 0"
+              :class="`tp-submenu ${openCategory === item.nombre ? 'active' : ''}`"
             >
-              <li v-for="(child, i) in item.children" :key="i">
-                <a class="cursor-pointer">{{ child }}</a>
+              <li v-for="(child, i) in item.sub_familia_articulos" :key="i">
+                <a class="cursor-pointer">{{ child.nombre }}</a>
               </li>
             </ul>
           </li>
@@ -48,6 +48,10 @@
 </template>
 
 <script setup lang="ts">
+import {useCategoriasStore} from "@/pinia/useCategoriasStore";
+
+const {initialState} = useCategorias;
+const catStore = useCategoriasStore();
 import category_data from "@/data/category-data";
 const props = defineProps<{ productType: string }>();
 let isCategoryActive = ref<boolean>(false);

@@ -12,7 +12,7 @@
                 <div class="profile__info-content">
                   <!-- form start -->
 
-                  <Form @submit="onSubmitConsulta">
+                  <div >
                     <div class="row">
                       <div class="col-xxl-4 col-md-4">
                         <div class="profile__input-box">
@@ -45,11 +45,11 @@
 
                       <div class="col-xxl-4 col-md-4">
                         <div class="profile__btn">
-                          <button v-if="!state.sendRes"  class="tp-btn">Consultar Estado</button>
+                          <button v-if="!state.sendRes"  class="tp-btn" @click="onSubmitConsulta">Consultar Estado</button>
                         </div>
                       </div>
                     </div>
-                  </Form>
+                  </div>
 
                   <p>*Si deseas saber mas información sobre tu fucha de garantía, por favor inicia sesión a nuestra
                   plataforma</p>
@@ -88,81 +88,80 @@
   </div>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import {useReCaptcha} from "vue-recaptcha-v3";
 import {useCartStore} from "@/pinia/useCartStore";
 import {toast} from "vue3-toastify";
+import {cursor} from "sisteransi";
+import to = cursor.to;
 const axios = useNuxtApp().$axios;
 const loadPage = useCartStore()
 
-export default defineComponent({
-  setup() {
-    const recaptchaInstance = useReCaptcha();
-    const recaptcha = async () => {
-      // optional you can await for the reCaptcha load
-      await recaptchaInstance?.recaptchaLoaded();
 
-      // get the token, a custom action could be added as argument to the method
-      const token = await recaptchaInstance?.executeRecaptcha('onSubmitId');
+const recaptchaInstance = useReCaptcha();
+const recaptcha = async () => {
+  // optional you can await for the reCaptcha load
+  await recaptchaInstance?.recaptchaLoaded();
 
-      return token;
-    };
+  // get the token, a custom action could be added as argument to the method
+  const token = await recaptchaInstance?.executeRecaptcha('onSubmitId');
 
-    const state = reactive({
-      sendRes: false,
-      identidad: '',
-      garantia: '',
-      Fichas: []
+  return token;
+};
+
+const state = reactive({
+  sendRes: false,
+  identidad: '',
+  garantia: '',
+  Fichas: []
+})
+const validarFicha = (value:string|null) =>{
+  if (!value) return 'El # de cuenta es requerida';
+  if (value?.length <= 5) return 'El # de ficha tiene que sey mayor a 5 carácteres';
+  return true;
+}
+const validarIdentidad = (value:string|null) => {
+  let regexIdentidad = RegExp("^[0-9 ]*$");
+  if (!value) return 'La identidad es requerida';
+  if (!regexIdentidad.test(value)) return 'La identidad solo tiene que llevar solo números. Sin guiones y sin espacios';
+  if (value?.length !== 13) return 'La identidad tiene que ser de 13 carácteres';
+  return true;
+}
+
+async function onSubmitConsulta(){
+  let valIdentidad = validarIdentidad(state.identidad);
+  let valFicha = validarFicha(state.garantia)
+  if (valIdentidad=== true && valFicha === true){
+    state.sendRes = true;
+    const token = await recaptcha();
+    let formData = new FormData();
+    formData.append('recaptcha-token', token);
+    formData.append('identidad', state.identidad);
+    formData.append('cod', state.garantia);
+    loadPage.switchLoadingPage();
+
+    axios.post('ficha_garantia/consulta',formData).then((res:resConsultaInterface)=>{
+      if (res.data.estado){
+        state.Fichas = res.data.fichas;
+        state.identidad = '';
+        state.garantia  = '';
+        toast.success(res.data.msj);
+      }else
+        toast.error(res.data.msj);
+
+      loadPage.switchLoadingPage()
+      state.sendRes = false;
+    }).catch(()=>{
+      loadPage.switchLoadingPage();
+      state.sendRes = false;
+      toast.error(`Hubo un error en el servidor`);
     })
-
-    return{
-      recaptcha,
-      state,
-    }
-  },
-  methods:{
-    async onSubmitConsulta():Promise<void>{
-      if (this.validarIdentidad(this.state.identidad) === true &&
-          this.validarFicha(this.state.garantia) === true){
-        this.state.sendRes = true;
-        const token = await this.recaptcha();
-        let formData = new FormData();
-        formData.append('recaptcha-token', token);
-        formData.append('identidad', this.state.identidad);
-        formData.append('cod', this.state.garantia);
-        loadPage.switchLoadingPage();
-
-        axios.post('ficha_garantia/consulta',formData).then((res:resConsultaInterface)=>{
-          if (res.data.estado){
-            this.state.Fichas = res.data.fichas;
-            this.state.identidad = '';
-            toast.success(res.data.msj);
-          }else
-            toast.error(res.data.msj);
-
-          loadPage.switchLoadingPage()
-          this.state.sendRes = false;
-        }).catch(()=>{
-          loadPage.switchLoadingPage();
-          this.state.sendRes = false;
-          toast.error(`Hubo un error en el servidor`);
-        })
-      }
-    },
-    validarFicha(value:string|null){
-      if (!value) return 'El # de cuenta es requerida';
-      if (value?.length <= 5) return 'El # de ficha tiene que sey mayor a 5 carácteres';
-      return true;
-    },
-    validarIdentidad(value:string|null){
-      let regexIdentidad = RegExp("^[0-9 ]*$");
-      if (!value) return 'La identidad es requerida';
-      if (!regexIdentidad.test(value)) return 'La identidad solo tiene que llevar solo números. Sin guiones y sin espacios';
-      if (value?.length !== 13) return 'La identidad tiene que ser de 13 carácteres';
-      return true;
-    }
-  }
-});
+  }else
+    if (valFicha !== true)
+      toast.error(valFicha);
+    if (valIdentidad !== true)
+      toast.error(valIdentidad)
+}
 
 interface resConsultaInterface{
   data: resDatosFichaInterface

@@ -40,8 +40,8 @@
                 <h4 class="tp-footer-widget-title">Infomación</h4>
                 <div class="tp-footer-widget-content">
                   <ul>
-                    <li><a href="#">Nuestra Historia</a></li>
-                    <li><a href="#">Sucursales</a></li>
+                    <li><a href="/surti/historia">Nuestra Historia</a></li>
+                    <li><a href="/surti/ubicaciones">Sucursales</a></li>
                     <li><a href="#">Politicas de Compra Online</a></li>
                     <li><a href="#">Politicas de Solicitud de Credito Online</a></li>
                     <li><a href="#">Politicas de Tilk Mobile</a></li>

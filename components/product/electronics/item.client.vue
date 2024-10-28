@@ -1,7 +1,7 @@
 <template>
   <div :class="`${offer_style ? 'tp-product-offer-item' : 'mb-25'} tp-product-item transition-3`">
     <div class="tp-product-thumb p-relative fix m-img">
-      <nuxt-link :href="`/detalle_articulo/${item.codigo_sistema}`">
+      <nuxt-link :href="`/product-details/${item.codigo_sistema}`">
         <div style="height: 300px; width:100%;" class="d-flex justify-content-center align-items-center">
           <img :src="item.url"  style="height: 200px; width: 80%" alt="product-electronic" />
         </div>
@@ -46,7 +46,7 @@
     <!-- product content -->
     <div class="tp-product-content">
       <div class="tp-product-category">
-        <nuxt-link :href="`/detalle_articulo/${item.codigo_sistema}`">{{item.familia}} > {{ item.cat }}</nuxt-link>
+        <nuxt-link :href="`/product-details/${item.codigo_sistema}`">{{item.familia}} > {{ item.cat }}</nuxt-link>
       </div>
       <div class="tp-product-category" style="margin-top: -10px">
         <span>Marca: {{item.marca}}</span>
@@ -56,7 +56,7 @@
       </div>
       <div style="height: 50px">
         <h3 class="tp-product-title">
-          <nuxt-link :href="`/detalle_articulo/${item.codigo_sistema}`">
+          <nuxt-link :href="`/product-details/${item.codigo_sistema}`">
             {{ (item.nombre_articulo.length < 50)?item.nombre_articulo:item.nombre_articulo.substring(0,47)+'...' }}
           </nuxt-link>
         </h3>

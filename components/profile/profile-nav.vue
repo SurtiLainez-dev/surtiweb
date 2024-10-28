@@ -15,7 +15,7 @@
         aria-controls="nav-profile"
         aria-selected="false"
       >
-        <span><i class="fa-regular fa-user-pen"></i></span>Profile
+        <span><i class="fa-regular fa-user-pen"></i></span>Perfil
       </button>
       <button
         class="nav-link"
@@ -27,11 +27,12 @@
         aria-controls="nav-information"
         aria-selected="false"
       >
-        <span><i class="fa-regular fa-circle-info"></i></span> Information
+        <span><i class="fa-regular fa-circle-info"></i></span> Datos Personales
       </button>
       <button
         class="nav-link"
         id="nav-address-tab"
+        disabled
         data-bs-toggle="tab"
         data-bs-target="#nav-address"
         type="button"
@@ -39,7 +40,33 @@
         aria-controls="nav-address"
         aria-selected="false"
       >
-        <span><i class="fa-light fa-location-dot"></i></span> Address
+        <span><i class="fa-light fa-location-dot"></i></span> Direcciones
+      </button>
+      <button
+          class="nav-link"
+          id="nav-order-tab"
+          disabled
+          data-bs-toggle="tab"
+          data-bs-target="#nav-order"
+          type="button"
+          role="tab"
+          aria-controls="nav-order"
+          aria-selected="false"
+      >
+        <span><i class="fa-light fa-phone"></i></span> Telefonos y Referencias
+      </button>
+      <button
+          class="nav-link"
+          id="nav-order-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-order"
+          type="button"
+          disabled
+          role="tab"
+          aria-controls="nav-order"
+          aria-selected="false"
+      >
+        <span><i class="fa-light fa-clipboard-list-check"></i></span> Mis Solicitudes de Credito
       </button>
       <button
         class="nav-link"
@@ -47,35 +74,89 @@
         data-bs-toggle="tab"
         data-bs-target="#nav-order"
         type="button"
+        disabled
         role="tab"
         aria-controls="nav-order"
         aria-selected="false"
       >
-        <span><i class="fa-light fa-clipboard-list-check"></i></span> My Orders
+        <span><i class="fa-light fa-clipboard-list-check"></i></span> Mis Cuentas
+      </button>
+      <button
+          class="nav-link"
+          id="nav-order-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-order"
+          disabled
+          type="button"
+          role="tab"
+          aria-controls="nav-order"
+          aria-selected="false"
+      >
+        <span><i class="fa-light fa-clipboard-list-check"></i></span> Garantias
+      </button>
+      <button
+          class="nav-link"
+          id="nav-order-tab"
+          data-bs-toggle="tab"
+          disabled
+          data-bs-target="#nav-order"
+          type="button"
+          role="tab"
+          aria-controls="nav-order"
+          aria-selected="false"
+      >
+        <span><i class="fa-light fa-clipboard-list-check"></i></span> Permiso para Circular sin Placa
       </button>
       <button
         class="nav-link"
         id="nav-notification-tab"
         data-bs-toggle="tab"
+        disabled
         data-bs-target="#nav-notification"
         type="button"
         role="tab"
         aria-controls="nav-notification"
         aria-selected="false"
       >
-        <span><i class="fa-regular fa-bell"></i></span> Notification
+        <span><i class="fa-regular fa-bell"></i></span> Finiquitos Aprobados
+      </button>
+<!--      <button-->
+<!--        class="nav-link"-->
+<!--        id="nav-password-tab"-->
+<!--        data-bs-toggle="tab"-->
+<!--        data-bs-target="#nav-password"-->
+<!--        type="button"-->
+<!--        role="tab"-->
+<!--        aria-controls="nav-password"-->
+<!--        aria-selected="false"-->
+<!--      >-->
+<!--        <span><i class="fa-regular fa-lock"></i></span> Change Password-->
+<!--      </button>-->
+      <button
+          class="nav-link"
+          id="nav-order-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-order"
+          type="button"
+          role="tab"
+          disabled
+          aria-controls="nav-order"
+          aria-selected="false"
+      >
+        <span><i class="fa-light fa-check"></i></span> Realizar un Pago con Tarjeta
       </button>
       <button
-        class="nav-link"
-        id="nav-password-tab"
-        data-bs-toggle="tab"
-        data-bs-target="#nav-password"
-        type="button"
-        role="tab"
-        aria-controls="nav-password"
-        aria-selected="false"
+          class="nav-link"
+          id="nav-order-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-order"
+          type="button"
+          role="tab"
+          aria-controls="nav-order"
+          disabled
+          aria-selected="false"
       >
-        <span><i class="fa-regular fa-lock"></i></span> Change Password
+        <span><i class="fa-light fa-clipboard-list-check"></i></span> Recibos Vinculados
       </button>
     </div>
   </nav>

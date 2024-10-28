@@ -1,7 +1,7 @@
 <template>
   <div>
       <!-- breadcrumb start -->
-      <breadcrumb-4 title="My account" subtitle="My account" :center="true" />
+      <breadcrumb-4 title="Lainez Online" subtitle="Plataforma de Clientes" :center="true" />
       <!-- breadcrumb end -->
 
       <!-- login area start -->
@@ -11,5 +11,5 @@
 </template>
 
 <script setup lang="ts">
-useSeoMeta({ title: "Login Page" });
+useSeoMeta({ title: "Iniciando Sesión - Lainez Online" });
 </script>
