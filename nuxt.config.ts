@@ -25,15 +25,8 @@ export default defineNuxtConfig({
       ],
     }
   },
-  ssr: true,
+  ssr: false,
   target: "server",
-  nitro: {
-    prerender: {
-      routes:['/surti/otras_gestiones/estado_placa'],
-      crawlLinks: true,
-      failOnError: false,
-    },
-  },
   css: [
     "bootstrap/scss/bootstrap.scss",
     "swiper/css/bundle",

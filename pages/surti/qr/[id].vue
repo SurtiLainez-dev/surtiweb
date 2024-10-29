@@ -92,10 +92,12 @@ const Qr    = route.params.id;
 const axios = useNuxtApp().$axios;
 const load  = ref<boolean>(false);
 
-
+definePageMeta({
+  middleware: 'params' // this should match the name of the file inside the middleware directory
+})
 
 onMounted(()=>{
-  // consultarQr();
+  consultarQr();
 })
 
 const consultarQr = () =>{
