@@ -29,25 +29,24 @@
       >
         <span><i class="fa-regular fa-circle-info"></i></span> Datos Personales
       </button>
-      <button
-        class="nav-link"
-        id="nav-address-tab"
-        disabled
-        data-bs-toggle="tab"
-        data-bs-target="#nav-address"
-        type="button"
-        role="tab"
-        aria-controls="nav-address"
-        aria-selected="false"
-      >
-        <span><i class="fa-light fa-location-dot"></i></span> Direcciones
-      </button>
+<!--      <button-->
+<!--        class="nav-link"-->
+<!--        id="nav-address-tab"-->
+<!--        disabled-->
+<!--        data-bs-toggle="tab"-->
+<!--        data-bs-target="#nav-address"-->
+<!--        type="button"-->
+<!--        role="tab"-->
+<!--        aria-controls="nav-address"-->
+<!--        aria-selected="false"-->
+<!--      >-->
+<!--        <span><i class="fa-light fa-location-dot"></i></span> Direcciones-->
+<!--      </button>-->
       <button
           class="nav-link"
-          id="nav-order-tab"
-          disabled
+          id="nav-telefonos-tab"
           data-bs-toggle="tab"
-          data-bs-target="#nav-order"
+          data-bs-target="#nav-telefonos"
           type="button"
           role="tab"
           aria-controls="nav-order"
@@ -55,70 +54,67 @@
       >
         <span><i class="fa-light fa-phone"></i></span> Telefonos y Referencias
       </button>
-      <button
-          class="nav-link"
-          id="nav-order-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-order"
-          type="button"
-          disabled
-          role="tab"
-          aria-controls="nav-order"
-          aria-selected="false"
-      >
-        <span><i class="fa-light fa-clipboard-list-check"></i></span> Mis Solicitudes de Credito
-      </button>
+<!--      <button-->
+<!--          class="nav-link"-->
+<!--          id="nav-order-tab"-->
+<!--          data-bs-toggle="tab"-->
+<!--          data-bs-target="#nav-order"-->
+<!--          type="button"-->
+<!--          disabled-->
+<!--          role="tab"-->
+<!--          aria-controls="nav-order"-->
+<!--          aria-selected="false"-->
+<!--      >-->
+<!--        <span><i class="fa-light fa-clipboard-list-check"></i></span> Mis Solicitudes de Credito-->
+<!--      </button>-->
       <button
         class="nav-link"
-        id="nav-order-tab"
+        id="nav-cuentas-tab"
         data-bs-toggle="tab"
-        data-bs-target="#nav-order"
+        data-bs-target="#nav-cuentas"
         type="button"
-        disabled
         role="tab"
-        aria-controls="nav-order"
+        aria-controls="nav-cuentas"
         aria-selected="false"
       >
         <span><i class="fa-light fa-clipboard-list-check"></i></span> Mis Cuentas
       </button>
       <button
           class="nav-link"
-          id="nav-order-tab"
+          id="nav-fichasgarantias-tab"
           data-bs-toggle="tab"
-          data-bs-target="#nav-order"
-          disabled
+          data-bs-target="#nav-fichasgarantias"
           type="button"
           role="tab"
-          aria-controls="nav-order"
+          aria-controls="nav-fichasgarantias"
           aria-selected="false"
       >
         <span><i class="fa-light fa-clipboard-list-check"></i></span> Garantias
       </button>
-      <button
-          class="nav-link"
-          id="nav-order-tab"
-          data-bs-toggle="tab"
-          disabled
-          data-bs-target="#nav-order"
-          type="button"
-          role="tab"
-          aria-controls="nav-order"
-          aria-selected="false"
-      >
-        <span><i class="fa-light fa-clipboard-list-check"></i></span> Permiso para Circular sin Placa
-      </button>
+<!--      <button-->
+<!--          class="nav-link"-->
+<!--          id="nav-order-tab"-->
+<!--          data-bs-toggle="tab"-->
+<!--          disabled-->
+<!--          data-bs-target="#nav-order"-->
+<!--          type="button"-->
+<!--          role="tab"-->
+<!--          aria-controls="nav-order"-->
+<!--          aria-selected="false"-->
+<!--      >-->
+<!--        <span><i class="fa-light fa-clipboard-list-check"></i></span> Permiso para Circular sin Placa-->
+<!--      </button>-->
       <button
         class="nav-link"
-        id="nav-notification-tab"
+        id="nav-finiquitos-tab"
         data-bs-toggle="tab"
-        disabled
-        data-bs-target="#nav-notification"
+        data-bs-target="#nav-finiquitos"
         type="button"
         role="tab"
-        aria-controls="nav-notification"
+        aria-controls="nav-finiquitos"
         aria-selected="false"
       >
-        <span><i class="fa-regular fa-bell"></i></span> Finiquitos Aprobados
+        <span><i class="fa-regular fa-bell"></i></span> Constancias de Estado de Cuentas
       </button>
 <!--      <button-->
 <!--        class="nav-link"-->
@@ -132,32 +128,32 @@
 <!--      >-->
 <!--        <span><i class="fa-regular fa-lock"></i></span> Change Password-->
 <!--      </button>-->
-      <button
-          class="nav-link"
-          id="nav-order-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-order"
-          type="button"
-          role="tab"
-          disabled
-          aria-controls="nav-order"
-          aria-selected="false"
-      >
-        <span><i class="fa-light fa-check"></i></span> Realizar un Pago con Tarjeta
-      </button>
-      <button
-          class="nav-link"
-          id="nav-order-tab"
-          data-bs-toggle="tab"
-          data-bs-target="#nav-order"
-          type="button"
-          role="tab"
-          aria-controls="nav-order"
-          disabled
-          aria-selected="false"
-      >
-        <span><i class="fa-light fa-clipboard-list-check"></i></span> Recibos Vinculados
-      </button>
+<!--      <button-->
+<!--          class="nav-link"-->
+<!--          id="nav-order-tab"-->
+<!--          data-bs-toggle="tab"-->
+<!--          data-bs-target="#nav-order"-->
+<!--          type="button"-->
+<!--          role="tab"-->
+<!--          disabled-->
+<!--          aria-controls="nav-order"-->
+<!--          aria-selected="false"-->
+<!--      >-->
+<!--        <span><i class="fa-light fa-check"></i></span> Realizar un Pago con Tarjeta-->
+<!--      </button>-->
+<!--      <button-->
+<!--          class="nav-link"-->
+<!--          id="nav-order-tab"-->
+<!--          data-bs-toggle="tab"-->
+<!--          data-bs-target="#nav-order"-->
+<!--          type="button"-->
+<!--          role="tab"-->
+<!--          aria-controls="nav-order"-->
+<!--          disabled-->
+<!--          aria-selected="false"-->
+<!--      >-->
+<!--        <span><i class="fa-light fa-clipboard-list-check"></i></span> Recibos Vinculados-->
+<!--      </button>-->
     </div>
   </nav>
 </template>

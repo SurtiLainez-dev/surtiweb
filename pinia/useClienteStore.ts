@@ -1,36 +1,17 @@
 import {defineStore} from "pinia";
-import {ClienteInterfaz, resMisDatos} from "@/types/lainez/clienteInterfaces";
-
-// export const useClienteStore = defineStore("cliente_store", () => {
-//     let cliente = ref<ClienteInterfaz | null>(null);
-//     let cantCuentas = ref<number>(0);
-//     let cantSolicitudes = ref<number>(0);
-//     let cantRecibos = ref<number>(0);
-//
-//     const setDatosCliente = (data:resMisDatos) =>{
-//         cliente.value         = data.cliente;
-//         cantCuentas.value     = data.cantCuentas;
-//         cantSolicitudes.value = data.cantSolicitudes;
-//         cantRecibos.value     = data.cantRecibos;
-//         console.log('entra')
-//     }
-//
-//     return {
-//         cliente,
-//         cantCuentas,
-//         cantSolicitudes,
-//         cantRecibos,
-//         setDatosCliente
-//     };
-// });
-
+import {ClienteInterfaz, resMisDatos, TelefonoInterfaz} from "@/types/lainez/clienteInterfaces";
+const axios = useNuxtApp().$axios;
 export const useClienteStore = defineStore('cliente_store', {
     state: () => ({
         cliente: null,
         cantCuentas: 0,
         cantRecibos: 0,
         cantSolicitudes: 0,
-        loadData: false
+        loadData: false,
+        Cuentas: [],
+        Telefonos: [],
+        Garantias: [],
+        Finiquitos: []
     }),
     actions: {
         setDatosCliente (data:resMisDatos){
@@ -39,7 +20,26 @@ export const useClienteStore = defineStore('cliente_store', {
             this.cantCuentas     = data.cantCuentas;
             this.cantSolicitudes = data.cantSolicitudes;
             this.cantRecibos     = data.cantRecibos;
-            this.loadData        = true
+            this.loadData        = true;
+            // @ts-ignore
+            this.Telefonos       = data.telefonos;
+            // @ts-ignore
+            this.Cuentas         = data.cuentas;
+            // @ts-ignore
+            this.Garantias       = data.garantias;
+            this.Finiquitos      = data.finiquitos;
+        },
+        addTelefono(data:TelefonoInterfaz){
+            this.Telefonos.push({
+                // @ts-ignore
+                key: this.Telefonos.length,
+                // @ts-ignore
+                num: data.num,
+                // @ts-ignore
+                area: data.area,
+                // @ts-ignore
+                detalle: data.detalle
+            })
         }
     },
 });

@@ -24,8 +24,9 @@
           <input v-model="state.email"  type="email" placeholder="tucorreo@gmail.com"/>
         </div>
         <div class="tp-login-input-title">
-          <label for="email">Email</label>
+          <label for="email">Email Vinculado a tu perfil</label>
         </div>
+        <span style="font-size: 10px">*Si no sabe cual es su email vinculado a su cuenta por favor solicitelo al +504 9625-2525</span>
       </div>
       <div class="tp-login-input-box">
         <div class="p-relative">

@@ -51,6 +51,10 @@
                           este Qr fué alterado maliciosamente y este documento fué falsificado. Por favor reportalo</span>
                         </li>
                         <li class="tp-order-info-list-desc">
+                          <span>En caso de que uses el navegador de Google en celulares o tables, vas a tener que presionar el link en el cuadro oscuro en la parte
+                          superior, y se te abrirá el documento en una nueva pestaña.</span>
+                        </li>
+                        <li class="tp-order-info-list-desc">
                           <span><nuxt-link style="color:blue" to="/surti/validar_documento_qr">Volver a validar otro Codigo Qr</nuxt-link></span>
                         </li>
                         <li class="tp-order-info-list-desc">

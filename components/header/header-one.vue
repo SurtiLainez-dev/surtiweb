@@ -49,6 +49,7 @@
       </div>
 
       <!-- header bottom start -->
+<!--      area del menu desplegable-->
       <div class="tp-header-bottom tp-header-bottom-border d-none d-lg-block">
         <div class="container">
           <div class="tp-mega-menu-wrapper p-relative">

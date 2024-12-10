@@ -27,18 +27,27 @@
                         <div class="tab-pane fade" id="nav-information" role="tabpanel" aria-labelledby="nav-information-tab">
                           <profile-info/>
                         </div>
-<!--                        <div class="tab-pane fade" id="nav-password" role="tabpanel" aria-labelledby="nav-password-tab">-->
-<!--                          <profile-password/>-->
+                      <div class="tab-pane fade" id="nav-telefonos" role="tabpanel" aria-labelledby="nav-telefonos-tab">
+                        <telefonos-cliente/>
+                      </div>
+                      <div class="tab-pane fade" id="nav-cuentas" role="tabpanel" aria-labelledby="nav-cuentas-tab">
+                        <cuentas/>
+                      </div>
+                      <div class="tab-pane fade" id="nav-fichasgarantias" role="tabpanel" aria-labelledby="nav-fichasgarantias-tab">
+                        <ficha_garantias/>
+                      </div>
+                      <div class="tab-pane fade" id="nav-finiquitos" role="tabpanel" aria-labelledby="nav-finiquitos-tab">
+                        <finiquitos/>
+                      </div>
+<!--                        <div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">-->
+<!--                          <profile-address/>-->
 <!--                        </div>-->
-                        <div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">
-                          <profile-address/>
-                        </div>
-                        <div class="tab-pane fade" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab">
-                          <profile-orders/>
-                        </div>
-                        <div class="tab-pane fade" id="nav-notification" role="tabpanel" aria-labelledby="nav-notification-tab">
-                          <profile-notification/>
-                        </div>
+<!--                        <div class="tab-pane fade" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab">-->
+<!--                          <profile-orders/>-->
+<!--                        </div>-->
+<!--                        <div class="tab-pane fade" id="nav-notification" role="tabpanel" aria-labelledby="nav-notification-tab">-->
+<!--                          <profile-notification/>-->
+<!--                        </div>-->
                     </div>
                   </div>
               </div>
@@ -50,4 +59,8 @@
 
 <script setup lang="ts">
 
+import TelefonosCliente from "../lainez/perfil/telefonosCliente.vue";
+import Cuentas from "../lainez/perfil/cuentas.vue";
+import Ficha_garantias from "../lainez/perfil/ficha_garantias.vue";
+import Finiquitos from "../lainez/perfil/finiquitos.vue";
 </script>

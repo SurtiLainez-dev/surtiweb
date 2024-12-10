@@ -50,7 +50,7 @@
       </div>
     </div>
     <div class="tp-login-bottom">
-      <button  class="tp-login-btn w-100" @click="login">Iniciar Sesión {{useAuth.loading}}</button>
+      <button  class="tp-login-btn w-100" @click="login">Iniciar Sesión</button>
     </div>
   </div>
 </template>
@@ -66,8 +66,8 @@ const state = reactive({
 })
 
 const user = ref({
-  username: 'williams_santos@grupolainez.com',
-  password: '1998wdsl@@',
+  username: '',
+  password: '',
 });
 
 const login = async () => {

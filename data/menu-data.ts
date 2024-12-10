@@ -42,7 +42,7 @@ export const menu_data:IMenuItem[] = [
           {title:'Estado de Placa',link:'/surti/otras_gestiones/estado_placa'},
           {title:'Estado de Traspaso',link:'/surti/garantia/consulta'},
           {title:'Estado de Permiso de Circulación sin Placa',link:'/surti/garantia/consulta'},
-          {title:'Estado de Finiquito de Cancelación',link:'/surti/garantia/consulta'},
+          {title:'Solicitar Constancia de Estado de Cuenta',link:'/surti/otras_gestiones/solicitar_finiquito'},
           {title:'Validar Documento Qr',link:'/surti/validar_documento_qr'},
         ]
       }
