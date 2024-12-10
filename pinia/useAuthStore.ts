@@ -7,7 +7,7 @@ interface UserPayloadInterface {
     password: string;
 }
 
-const url = 'http://localhost:8000/api/tilk/user/'
+const url = 'https://grupolainez.com/api/tilk/user/'
 export const useAuthStore = defineStore('user_auth', () =>{
     const authenticated = ref<boolean>(false);
     const loading       = ref<boolean>(false);
