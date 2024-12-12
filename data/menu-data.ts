@@ -40,8 +40,8 @@ export const menu_data:IMenuItem[] = [
         link:'/surti/credito',
         dropdown_menus:[
           {title:'Estado de Placa',link:'/surti/otras_gestiones/estado_placa'},
-          {title:'Estado de Traspaso',link:'/surti/garantia/consulta'},
-          {title:'Estado de Permiso de Circulación sin Placa',link:'/surti/garantia/consulta'},
+          // {title:'Estado de Traspaso',link:'/surti/garantia/consulta'},
+          {title:'Solicitar Permiso de Circulación sin Placa',link:'/surti/otras_gestiones/permiso_circular_sin_placa'},
           {title:'Solicitar Constancia de Estado de Cuenta',link:'/surti/otras_gestiones/solicitar_finiquito'},
           {title:'Validar Documento Qr',link:'/surti/validar_documento_qr'},
         ]
@@ -68,9 +68,9 @@ export const mobile_menu:IMobileType[] = [
     title: 'Surti Créditos',
     link: '/surti/requisitos_sdc',
     sub_menus: [
-      { title: 'Requisitos', link: '/surti/requisitos_sdc' },
-      { title: 'Nuva Solicitúd', link: '/surti/nueva_solicitud_credito' },
-      { title: 'Solicitude Enviadas', link: '/surti/mis_solicitudes' },
+      {title:'Requísitos para un Crédito',link:'/surti/requisitos_sdc'},
+      {title:'Nueva Solicitúd de Crédito',link:'/surti/nueva_solicitud_credito'},
+      {title:'Solicitudes Enviadas',link:'/surti/mis_solicitudes'},
     ],
   },
   {
@@ -79,8 +79,8 @@ export const mobile_menu:IMobileType[] = [
     title: 'Garantía',
     link: '/surti/garantia/nueva',
     sub_menus: [
-      { title: 'Iniciar Proceso', link: '/surti/garantia/nueva'},
-      { title: 'Estado de Ficha', link: '/surti/garantia/consulta'},
+      {title:'Iniciar Proceso',link:'/surti/garantia/nueva'},
+      {title:'Estado de Ficha',link:'/surti/garantia/consulta'},
     ],
   },
   {
@@ -89,8 +89,11 @@ export const mobile_menu:IMobileType[] = [
     title: 'Otras Gestiones',
     link: '/',
     sub_menus: [
-      { title: 'Estado de Placa', link: '/surti/otras_gestiones/estado_placa' },
-      { title: 'Estado de Traspaso', link: '/surti/garantia/consulta' },
+      {title:'Estado de Placa',link:'/surti/otras_gestiones/estado_placa'},
+      // {title:'Estado de Traspaso',link:'/surti/garantia/consulta'},
+      {title:'Solicitar Permiso de Circulación sin Placa',link:'/surti/otras_gestiones/permiso_circular_sin_placa'},
+      {title:'Solicitar Constancia de Estado de Cuenta',link:'/surti/otras_gestiones/solicitar_finiquito'},
+      {title:'Validar Documento Qr',link:'/surti/validar_documento_qr'},
     ],
   },
 ]
