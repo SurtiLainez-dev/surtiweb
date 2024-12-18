@@ -35,6 +35,18 @@ export interface FichaGarantiInterfaz{
     comentario_inicial_usuario: string | null,
     comentario_cliente: string
 }
+
+export interface PermisosCirculacion{
+    marca: string,
+    modelo: string,
+    chasis: string,
+    moto: string,
+    color: string,
+    cod: string,
+    placa: string | null,
+    fecha_vencimiento: string,
+    permiso: string
+}
 export interface resMisDatos {
     cliente: ClienteInterfaz,
     cantCuentas: number,
@@ -43,5 +55,6 @@ export interface resMisDatos {
     telefonos: TelefonoInterfaz[],
     cuentas: CuentaInterfaz[],
     garantias: FichaGarantiInterfaz[],
-    finiquitos: []
+    finiquitos: [],
+    permisos: PermisosCirculacion[]
 }

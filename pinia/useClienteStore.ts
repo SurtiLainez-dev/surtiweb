@@ -11,7 +11,8 @@ export const useClienteStore = defineStore('cliente_store', {
         Cuentas: [],
         Telefonos: [],
         Garantias: [],
-        Finiquitos: []
+        Finiquitos: [],
+        Permisos: []
     }),
     actions: {
         setDatosCliente (data:resMisDatos){
@@ -28,6 +29,8 @@ export const useClienteStore = defineStore('cliente_store', {
             // @ts-ignore
             this.Garantias       = data.garantias;
             this.Finiquitos      = data.finiquitos;
+            // @ts-ignore
+            this.Permisos        = data.permisos;
         },
         addTelefono(data:TelefonoInterfaz){
             this.Telefonos.push({

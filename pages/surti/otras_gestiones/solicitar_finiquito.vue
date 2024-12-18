@@ -60,6 +60,7 @@
                                 placeholder="Introducir un correo electronico"/>
                             <span><svg-email/></span>
                           </div>
+                          <span>Correl Electronico Personal</span>
                         </div>
                       </div>
                       <div class="col-xxl-5 col-md-5">
@@ -198,7 +199,6 @@
 </template>
 
 <script setup lang="ts">
-import {visit} from "yaml";
 
 useSeoMeta({ title: "Solicitando Estado de Cuentas - Lainez Online" });
 import {useReCaptcha} from "vue-recaptcha-v3";

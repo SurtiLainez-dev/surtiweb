@@ -39,9 +39,9 @@
                       <div class="tab-pane fade" id="nav-finiquitos" role="tabpanel" aria-labelledby="nav-finiquitos-tab">
                         <finiquitos/>
                       </div>
-<!--                        <div class="tab-pane fade" id="nav-address" role="tabpanel" aria-labelledby="nav-address-tab">-->
-<!--                          <profile-address/>-->
-<!--                        </div>-->
+                        <div class="tab-pane fade" id="nav-permisos" role="tabpanel" aria-labelledby="nav-permisos-tab">
+                          <permisos/>
+                        </div>
 <!--                        <div class="tab-pane fade" id="nav-order" role="tabpanel" aria-labelledby="nav-order-tab">-->
 <!--                          <profile-orders/>-->
 <!--                        </div>-->
@@ -63,4 +63,5 @@ import TelefonosCliente from "../lainez/perfil/telefonosCliente.vue";
 import Cuentas from "../lainez/perfil/cuentas.vue";
 import Ficha_garantias from "../lainez/perfil/ficha_garantias.vue";
 import Finiquitos from "../lainez/perfil/finiquitos.vue";
+import Permisos from "../lainez/perfil/permisos.vue";
 </script>

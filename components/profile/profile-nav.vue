@@ -91,19 +91,18 @@
       >
         <span><i class="fa-light fa-clipboard-list-check"></i></span> Garantias
       </button>
-<!--      <button-->
-<!--          class="nav-link"-->
-<!--          id="nav-order-tab"-->
-<!--          data-bs-toggle="tab"-->
-<!--          disabled-->
-<!--          data-bs-target="#nav-order"-->
-<!--          type="button"-->
-<!--          role="tab"-->
-<!--          aria-controls="nav-order"-->
-<!--          aria-selected="false"-->
-<!--      >-->
-<!--        <span><i class="fa-light fa-clipboard-list-check"></i></span> Permiso para Circular sin Placa-->
-<!--      </button>-->
+      <button
+          class="nav-link"
+          id="nav-permisos-tab"
+          data-bs-toggle="tab"
+          data-bs-target="#nav-permisos"
+          type="button"
+          role="tab"
+          aria-controls="nav-permisos"
+          aria-selected="false"
+      >
+        <span><i class="fa-light fa-clipboard-list-check"></i></span> Permiso para Circular sin Placa
+      </button>
       <button
         class="nav-link"
         id="nav-finiquitos-tab"
