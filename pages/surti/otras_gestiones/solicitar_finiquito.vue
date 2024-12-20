@@ -8,7 +8,7 @@
           <div class="row gx-0">
             <div class="col-lg-12">
               <div class="profile__info" style="padding: 25px">
-                <h3 class="profile__info-title">Nueva Ficha de Garantia</h3>
+                <h3 class="profile__info-title">Nueva Solicitúd de Estado de Cuenta</h3>
                 <div class="profile__info-content">
                   <div>
                     <div class="row">
