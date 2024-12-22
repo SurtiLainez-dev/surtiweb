@@ -42,10 +42,10 @@
                   <ul>
                     <li><a href="/surti/historia">Nuestra Historia</a></li>
                     <li><a href="/surti/ubicaciones">Sucursales</a></li>
-                    <li><a href="#">Politicas de Compra Online</a></li>
-                    <li><a href="#">Politicas de Solicitud de Credito Online</a></li>
-                    <li><a href="#">Politicas de Tilk Mobile</a></li>
-                    <li><a href="#">Conoce TILK</a></li>
+                    <li><a href="/politicas_privacidad">Politicas de Privacidad</a></li>
+                    <li><a href="/terminos">Términos y Condiciones de Uso</a></li>
+<!--                    <li><a href="#">Politicas de Tilk Mobile</a></li>-->
+<!--                    <li><a href="#">Conoce TILK</a></li>-->
                   </ul>
                 </div>
               </div>
