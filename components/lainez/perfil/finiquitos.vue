@@ -25,7 +25,7 @@
               </td>
               <td>{{item.estado}}</td>
               <td>
-                <span @click="solicitarClave(item)" style="color: blue; cursor: pointer">Ver</span>
+                <span v-if="item.estado === 'ACEPTADO'" @click="solicitarClave(item)" style="color: blue; cursor: pointer">Ver</span>
               </td>
             </tr>
             </tbody>
