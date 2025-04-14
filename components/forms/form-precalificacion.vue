@@ -647,7 +647,7 @@ const onSubmitWhat = async () =>{
 
     axios.post('enviar_wha', formData).then((res:resSubmitId)=>{
       toast.success(res.data.msj);
-      vista.value             = 5;
+      vista.value             = 6;
       loadPage.switchLoadingPage();
     }).catch(()=>{
       loadPage.switchLoadingPage();
