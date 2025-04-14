@@ -13,7 +13,7 @@ export const menu_data:IMenuItem[] = [
         link:'/surti/credito',
         dropdown_menus:[
           {title:'Requísitos para un Crédito',link:'/surti/requisitos_sdc'},
-          {title:'Nueva Solicitúd de Crédito',link:'/surti/nueva_solicitud_credito'},
+          {title:'Nueva Precalificación',link:'/surti/nueva_precalificacion'},
           {title:'Solicitudes Enviadas',link:'/surti/mis_solicitudes'},
         ]
       }
