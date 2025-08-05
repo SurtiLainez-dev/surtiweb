@@ -45,7 +45,23 @@ export const menu_data:IMenuItem[] = [
           {title:'Solicitar Constancia de Estado de Cuenta',link:'/surti/otras_gestiones/solicitar_finiquito'},
           {title:'Validar Documento Qr',link:'/surti/validar_documento_qr'},
         ]
-      }
+      },
+    ]
+  },
+  {
+    id:4,
+    link:'/',
+    title:'Otras Gestiones',
+    mega_menu:true,
+    product_menus:[
+      {
+        id:1,
+        title:'Equipo de Surtidora Lainez',
+        link:'/',
+        dropdown_menus:[
+          {title:'Iniciar Proceso Solicitúd de Empleo',link:'/surti/otras_gestiones/proceso_empleo'},
+        ]
+      },
     ]
   },
 ]
