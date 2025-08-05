@@ -205,16 +205,16 @@ const loadPage = useCartStore();
 const recaptchaInstance = useReCaptcha();
 const vista = ref(1);
 const data = ref({
-  identidad: '0201199800946',
-  nombre_completo: 'WILLIAMS SANTOS',
+  identidad: '',
+  nombre_completo: '',
   interesado_en: 'Horario Completo',
   puesto: 'Auxiliar Contable',
-  domicilio: 'TRUJILLO, COLON',
-  telefono: '95625033',
-  email: 'willydsl98@gmail.com',
-  ultimo_trabajo: 'Surtidora Lainez',
+  domicilio: '',
+  telefono: '',
+  email: '',
+  ultimo_trabajo: '',
   is_trabaja: 'No',
-  comentario: 'Comentario de Ejemplo',
+  comentario: '',
   file: null
 })
 const axios = useNuxtApp().$axios;
