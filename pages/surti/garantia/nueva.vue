@@ -236,7 +236,6 @@ const validarIdentidad = (value:string|null) => {
   let regexIdentidad = RegExp("^[0-9 ]*$");
   if (!value) return 'La identidad es requerida';
   if (!regexIdentidad.test(value)) return 'La identidad solo tiene que llevar solo números. Sin guiones y sin espacios';
-  if (value?.length >= 13) return 'La identidad tiene que ser de 13 o 14 carácteres';
   return true;
 }
 const validarComentario = (value:string|null) => {
