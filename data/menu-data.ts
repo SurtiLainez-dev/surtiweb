@@ -110,6 +110,7 @@ export const mobile_menu:IMobileType[] = [
       {title:'Solicitar Permiso de Circulación sin Placa',link:'/surti/otras_gestiones/permiso_circular_sin_placa'},
       {title:'Solicitar Constancia de Estado de Cuenta',link:'/surti/otras_gestiones/solicitar_finiquito'},
       {title:'Validar Documento Qr',link:'/surti/validar_documento_qr'},
+      {title:'Iniciar Proceso Solicitúd de Empleo',link:'/surti/otras_gestiones/proceso_empleo'},
     ],
   },
 ]

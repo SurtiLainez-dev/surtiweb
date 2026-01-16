@@ -93,7 +93,6 @@ import {useReCaptcha} from "vue-recaptcha-v3";
 import {useCartStore} from "@/pinia/useCartStore";
 import {toast} from "vue3-toastify";
 import {cursor} from "sisteransi";
-import to = cursor.to;
 const axios = useNuxtApp().$axios;
 const loadPage = useCartStore()
 
